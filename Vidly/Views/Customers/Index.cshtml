@@ -1,0 +1,45 @@
+﻿@*
+    model is what is loaded into the view from the corresponding method in the Controller class.
+    In this case, model is set to an Enumerable of Customer because it is being passed a list of Customer objects (return View(customers))
+*@
+@model IEnumerable<Vidly.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@*
+    If statement checking if Model(An Enumerable list) contains any objects in it.    
+*@
+@if (!Model.Any())
+{
+    <p>There are currently no customers.</p>
+}
+else
+{
+    @*
+        Creates a table with the first column with the name Customer.
+        Loops through all objects in the enumerable list (Model) and creates an action link with that Customer's name, and has the link point to the Details method.
+        Details method computers logic based on
+    *@
+    <table class="table table-bordered table-hover">
+        <thread>
+            <tr>
+                <th>Customer</th>
+            </tr>
+        </thread>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(customer.Name, "Details", "Customers", new {id = customer.Id}, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

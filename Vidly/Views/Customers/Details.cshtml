@@ -1,0 +1,12 @@
+﻿@model Vidly.Models.Customer
+@{
+    @*
+        Sets the Title header to the name of the Customer passed through in Details. Details sets the Customer to the Id if it is found in our list.
+        This Customer object becomes our model for Details
+    *@
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
