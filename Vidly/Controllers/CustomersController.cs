@@ -47,8 +47,9 @@ namespace Vidly.Controllers
         /// <returns>Specific view of the movie with that Customer Id</returns>
         public ActionResult Details(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id); //Lambda function to set Customer equal to the Id passed through it
+            var customer = _context.Customers.Include(c=> c.MembershipType).SingleOrDefault(c => c.Id == id); //Lambda function to set Customer equal to the Id passed through it
 
+            
             if (customer == null)
                 return HttpNotFound();
 
