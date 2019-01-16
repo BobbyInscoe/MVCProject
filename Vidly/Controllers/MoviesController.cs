@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
@@ -13,13 +13,24 @@ namespace Vidly.Controllers
     /// </summary>
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext(); // Initialize connection to database
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         /// <summary>
         /// Loads the MovieViewModel with the list of customers into the view.
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
-            var movies = GetMovies(); // Sets movies equal to the list generated in the private method GetMovies();
+            var movies = _context.Movies.Include(m => m.GenreType).ToList(); // Sets movies equal to the list generated in the private method GetMovies();
             return View(movies);
         }
 
@@ -31,7 +42,7 @@ namespace Vidly.Controllers
         /// <returns>Specific view of the movie with that movie Id</returns>
         public ActionResult Details(int Id)
         {
-            var movie = GetMovies().SingleOrDefault(m => m.Id == Id); //Lambda function to set movie equal to the Id passed through it
+            var movie = _context.Movies.Include(m => m.GenreType).SingleOrDefault(m => m.Id == Id); //Lambda function to set movie equal to the Id passed through it
 
             if (movie == null)
                 return HttpNotFound();
@@ -41,13 +52,13 @@ namespace Vidly.Controllers
         /// <summary>
         /// Creates a private method that Generates a list of movies for us to work with
         /// </summary>
-        private IEnumerable<Movie> GetMovies()
-        {
-            return new List<Movie>
-            {
-                new Movie {Id = 1, Name = "Shrek"},
-                new Movie {Id = 2, Name = "Wall-E"}
-            };
-        }
+        //private IEnumerable<Movie> GetMovies()
+        //{
+        //    return new List<Movie>
+        //    {
+        //        new Movie {Id = 1, Name = "Shrek"},
+        //        new Movie {Id = 2, Name = "Wall-E"}
+        //    };
+        //}
     }
 }

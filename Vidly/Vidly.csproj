@@ -229,9 +229,22 @@
     <Compile Include="Migrations\201901161417075_SetCustomerBirthdayToNullCheck.Designer.cs">
       <DependentUpon>201901161417075_SetCustomerBirthdayToNullCheck.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901161441241_AddMovieFieldAndGenreType.cs" />
+    <Compile Include="Migrations\201901161441241_AddMovieFieldAndGenreType.Designer.cs">
+      <DependentUpon>201901161441241_AddMovieFieldAndGenreType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901161443006_PopulateGenreTypes.cs" />
+    <Compile Include="Migrations\201901161443006_PopulateGenreTypes.Designer.cs">
+      <DependentUpon>201901161443006_PopulateGenreTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901161525069_GetMoviesFromDatabase.cs" />
+    <Compile Include="Migrations\201901161525069_GetMoviesFromDatabase.Designer.cs">
+      <DependentUpon>201901161525069_GetMoviesFromDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\GenreType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -356,6 +369,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901161417075_SetCustomerBirthdayToNullCheck.resx">
       <DependentUpon>201901161417075_SetCustomerBirthdayToNullCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901161441241_AddMovieFieldAndGenreType.resx">
+      <DependentUpon>201901161441241_AddMovieFieldAndGenreType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901161443006_PopulateGenreTypes.resx">
+      <DependentUpon>201901161443006_PopulateGenreTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901161525069_GetMoviesFromDatabase.resx">
+      <DependentUpon>201901161525069_GetMoviesFromDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
