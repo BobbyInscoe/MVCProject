@@ -9,18 +9,36 @@
 }
 
 <h2>@Model.Name</h2>
+@if (@Model.Birthday.HasValue)
+{
 <table class="table table-bordered table-hover">
-    <tread>
+    <thead>
         <tr>
             <td>Membership Type</td>
             <td>Birthday</td>
         </tr>
-    </tread>
+    </thead>
     <tbody>
     <tr>
         <td>@Model.MembershipType.Name</td>
-        <td>@Model.Birthday.ToShortDateString()</td>
+        <td>@Model.Birthday.Value.ToShortDateString()</td>
     </tr>
     </tbody>
 </table>
 
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <td>Membership Type</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@Model.MembershipType.Name</td>
+        </tr>
+        </tbody>
+    </table>
+}

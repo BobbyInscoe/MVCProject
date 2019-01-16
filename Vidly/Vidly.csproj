@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201901161405017_UpdateCustomerNames.Designer.cs">
       <DependentUpon>201901161405017_UpdateCustomerNames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901161417075_SetCustomerBirthdayToNullCheck.cs" />
+    <Compile Include="Migrations\201901161417075_SetCustomerBirthdayToNullCheck.Designer.cs">
+      <DependentUpon>201901161417075_SetCustomerBirthdayToNullCheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -349,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901161405017_UpdateCustomerNames.resx">
       <DependentUpon>201901161405017_UpdateCustomerNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901161417075_SetCustomerBirthdayToNullCheck.resx">
+      <DependentUpon>201901161417075_SetCustomerBirthdayToNullCheck.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
