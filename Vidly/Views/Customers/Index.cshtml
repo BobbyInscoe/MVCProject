@@ -2,6 +2,7 @@
     model is what is loaded into the view from the corresponding method in the Controller class.
     In this case, model is set to an Enumerable of Customer because it is being passed a list of Customer objects (return View(customers))
 *@
+@using Vidly.Models
 @model IEnumerable<Vidly.Models.Customer>
 
 @{
@@ -10,6 +11,7 @@
 }
 
 <h2>Customers</h2>
+
 @*
     If statement checking if Model(An Enumerable list) contains any objects in it.    
 *@

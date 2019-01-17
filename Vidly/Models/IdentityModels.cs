@@ -18,12 +18,13 @@ namespace Vidly.Models
         }
     }
     /// <summary>
-    /// Creates the specific tables for our Models within the Database
+    /// Classes must be referenced here in order for them to be included in Database Migrations. Creates the specific tables for our Models within the Database.
     /// </summary>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<MembershipType> MembershipTypes { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

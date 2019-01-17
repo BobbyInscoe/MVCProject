@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -27,6 +28,45 @@ namespace Vidly.Controllers
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+        }
+
+        /// <summary>
+        /// Controller for a new Customer. Loads a CustomerViewModel (that contains Customer and Enum for Membership Types) into the View
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new CustomerFormViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+            return View("CustomerForm", viewModel);
+        }
+
+        /// <summary>
+        /// Save customer method. This will add the information that was posted on the New Customer page. After adding the customer to the context, it will save
+        /// the newly created customer in to the database and redirect to the Index page in CustomersController.
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+            // Checks if customer exists. If a new customer, adds it to the database, else it will update the existing customer
+            if (customer.Id == 0)
+                _context.Customers.Add(customer);
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthday = customer.Birthday;
+                customerInDb.MembershipTypeId= customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Index","Customers");
         }
 
         /// <summary>
@@ -71,5 +111,20 @@ namespace Vidly.Controllers
         //    };
 
         //}
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return HttpNotFound();
+
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("CustomerForm", viewModel);
+        }
     }
 }

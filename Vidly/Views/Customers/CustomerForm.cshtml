@@ -1,0 +1,44 @@
+﻿@model Vidly.ViewModels.CustomerFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Customer</h2>
+
+@using (Html.BeginForm("Save", "Customers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Birthday)
+        @Html.TextBoxFor(m => m.Customer.Birthday, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+
+    @*
+        Div for a dropdown list for Membership types for the new customer to choose.
+        <Expression> An expression that identifies the object that contains the properties to display.
+        <SelectList> A new list that takes an Enum list, Data value field, and a Text field for the data.
+            <DataValueField> is a property within the passed Model. In this case, property must belong to the MembershipTypes.
+            <DataTextfield> is a property within the passed Model. In this case, property must belong to the MembershipTypes. Text field determines what is shown in the dropdown text boxes.
+            <OptionLabel> Optional field for default text to be displayed before an item from the dropdown list is chosen.
+            <HtmlAttribute> HtmlAttribute for the Helper. Contains elements to set for the attributes. Attributes like those belonging to bootstrap or other Html objects.
+    *@
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribed to Newsletter?
+        </label>
+    </div>
+    @*
+        Bad practice. Id can be edited when inspecting elements
+    *@
+    @Html.HiddenFor(m => m.Customer.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
