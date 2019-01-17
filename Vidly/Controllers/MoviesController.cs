@@ -4,7 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Vidly.Migrations;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -46,14 +48,43 @@ namespace Vidly.Controllers
         /// </summary>
         /// <param name="Id">Id passed through</param>
         /// <returns>Specific view of the movie with that movie Id</returns>
-        public ActionResult Details(int Id)
+        public ActionResult Details(int id)
         {
-            var movie = _context.Movies.Include(m => m.GenreType).SingleOrDefault(m => m.Id == Id); //Lambda function to set movie equal to the Id passed through it
+            var movie = _context.Movies.Include(m => m.GenreType).SingleOrDefault(m => m.Id == id); //Lambda function to set movie equal to the Id passed through it
 
             if (movie == null)
                 return HttpNotFound();
 
             return View(movie);
+        }
+        /// <summary>
+        /// Sets the view to the Movie Form and loads a viewModel object that only has the genre types (as there is no movie yet created).
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult New()
+        {
+            var genreTypes = _context.GenreTypes.ToList();
+            var viewModel = new MovieFormViewModel
+            {
+                GenreTypes = genreTypes
+            };
+            return View("MovieForm", viewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
+                return HttpNotFound();
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                GenreTypes = _context.GenreTypes.ToList()
+            };
+
+            return View("MovieForm", viewModel);
         }
     }
 }

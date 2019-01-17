@@ -96,21 +96,10 @@ namespace Vidly.Controllers
             return View(customer);
         }
         /// <summary>
-        /// Creates a private method that Generates a list of Customers for us to work with
+        /// Sets the view to CustomerForm with the customer information from Customer Id loaded in.
         /// </summary>
-        //private IEnumerable<Customer> GetCustomers()
-        //{
-        //    return new List<Customer>
-        //    {
-        //        new Customer {Id = 1, Name = "Rachel"},
-        //        new Customer {Id = 2, Name = "Monica"},
-        //        new Customer {Id = 3, Name = "Ross"},
-        //        new Customer {Id = 4, Name = "Joey"},
-        //        new Customer {Id = 5, Name = "Chandler"},
-        //        new Customer {Id = 6, Name = "Phoebe"},
-        //    };
-
-        //}
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
@@ -125,6 +114,11 @@ namespace Vidly.Controllers
             };
 
             return View("CustomerForm", viewModel);
+        }
+
+        public ActionResult Delete()
+        {
+            throw new NotImplementedException();
         }
     }
 }
