@@ -93,15 +93,27 @@ namespace Vidly.Controllers
 
             return View("MovieForm", viewModel);
         }
-
+        
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new MovieFormViewModel
+                {
+                    GenreTypes = _context.GenreTypes.ToList(),
+                    Movie = movie
+                };
+
+                return View("MovieForm", viewModel);
+            }
+
             // Checks if customer exists. If a new customer, adds it to the database, else it will update the existing customer
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
+                
             }
             else
             {

@@ -8,13 +8,13 @@
 
 <div>
 
-    @if (@Model.Movie != null)
+    @if (@Model.Movie == null || @Model.Movie.Name == null)
     {
-        <h2>Edit Movie</h2>
+        <h2>New Movie</h2>
     }
     else
     {
-        <h2>New Movie</h2>
+        <h2>Edit Movie</h2>
     }
 </div>
 
@@ -23,6 +23,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.Name)
         @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.Name)
     </div>
 
     <div class="form-group">

@@ -53,6 +53,16 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("CustomerForm", viewModel);
+            }
             // Checks if customer exists. If a new customer, adds it to the database, else it will update the existing customer
             if (customer.Id == 0)
                 _context.Customers.Add(customer);
