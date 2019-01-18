@@ -24,6 +24,7 @@ namespace Vidly.Controllers
         {
             _context = new ApplicationDbContext(); // Initialize connection to database
         }
+
         /// <summary>
         /// Overrides Dispose
         /// </summary>
@@ -32,13 +33,16 @@ namespace Vidly.Controllers
         {
             _context.Dispose();
         }
+
         /// <summary>
         /// Loads the MovieViewModel with the list of customers into the view.
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
-            var movies = _context.Movies.Include(m => m.GenreType).ToList(); // Sets movies equal to the list generated in the private method GetMovies();
+            var movies =
+                _context.Movies.Include(m => m.GenreType)
+                    .ToList(); // Sets movies equal to the list generated in the private method GetMovies();
             return View(movies);
         }
 
@@ -50,13 +54,15 @@ namespace Vidly.Controllers
         /// <returns>Specific view of the movie with that movie Id</returns>
         public ActionResult Details(int id)
         {
-            var movie = _context.Movies.Include(m => m.GenreType).SingleOrDefault(m => m.Id == id); //Lambda function to set movie equal to the Id passed through it
+            var movie = _context.Movies.Include(m => m.GenreType)
+                .SingleOrDefault(m => m.Id == id); //Lambda function to set movie equal to the Id passed through it
 
             if (movie == null)
                 return HttpNotFound();
 
             return View(movie);
         }
+
         /// <summary>
         /// Sets the view to the Movie Form and loads a viewModel object that only has the genre types (as there is no movie yet created).
         /// </summary>
@@ -85,6 +91,28 @@ namespace Vidly.Controllers
             };
 
             return View("MovieForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            // Checks if customer exists. If a new customer, adds it to the database, else it will update the existing customer
+            if (movie.Id == 0)
+                _context.Movies.Add(movie);
+            else
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+
+                movieInDb.Name = movie.Name;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.GenreTypeId = movie.GenreTypeId;
+                movieInDb.Stock = movie.Stock;
+                movieInDb.DateAdded = DateTime.Today;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Movies");
         }
     }
 }
