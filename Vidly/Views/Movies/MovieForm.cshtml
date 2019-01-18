@@ -6,20 +6,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-
-    @if (@Model.Movie == null || @Model.Movie.Name == null)
-    {
-        <h2>New Movie</h2>
-    }
-    else
-    {
-        <h2>Edit Movie</h2>
-    }
-</div>
 
 @using (Html.BeginForm("Save", "Movies"))
 {
+    <div>
+
+        @if (@Model.Movie == null)
+        {
+            <h2>New Movie</h2>
+        }
+        else
+        {
+            <h2>Edit Movie</h2>
+        }
+    </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.Name)
         @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
