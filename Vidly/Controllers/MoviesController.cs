@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -98,7 +99,10 @@ namespace Vidly.Controllers
         {
             // Checks if customer exists. If a new customer, adds it to the database, else it will update the existing customer
             if (movie.Id == 0)
+            {
+                movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
+            }
             else
             {
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
@@ -107,10 +111,10 @@ namespace Vidly.Controllers
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.GenreTypeId = movie.GenreTypeId;
                 movieInDb.Stock = movie.Stock;
-                movieInDb.DateAdded = DateTime.Today;
             }
 
             _context.SaveChanges();
+
 
             return RedirectToAction("Index", "Movies");
         }

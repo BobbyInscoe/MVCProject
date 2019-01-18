@@ -245,6 +245,18 @@
     <Compile Include="Migrations\201901171208312_AddSetForMembershipTypes.Designer.cs">
       <DependentUpon>201901171208312_AddSetForMembershipTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901180934062_SetDateTimeAndGenreTypeToNullable.cs" />
+    <Compile Include="Migrations\201901180934062_SetDateTimeAndGenreTypeToNullable.Designer.cs">
+      <DependentUpon>201901180934062_SetDateTimeAndGenreTypeToNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901180937311_RemovedNullCheckForDateTimeInMovie.cs" />
+    <Compile Include="Migrations\201901180937311_RemovedNullCheckForDateTimeInMovie.Designer.cs">
+      <DependentUpon>201901180937311_RemovedNullCheckForDateTimeInMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901181028076_FixAddMovieAndUpdateMovieDates.cs" />
+    <Compile Include="Migrations\201901181028076_FixAddMovieAndUpdateMovieDates.Designer.cs">
+      <DependentUpon>201901181028076_FixAddMovieAndUpdateMovieDates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -388,6 +400,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901171208312_AddSetForMembershipTypes.resx">
       <DependentUpon>201901171208312_AddSetForMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901180934062_SetDateTimeAndGenreTypeToNullable.resx">
+      <DependentUpon>201901180934062_SetDateTimeAndGenreTypeToNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901180937311_RemovedNullCheckForDateTimeInMovie.resx">
+      <DependentUpon>201901180937311_RemovedNullCheckForDateTimeInMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901181028076_FixAddMovieAndUpdateMovieDates.resx">
+      <DependentUpon>201901181028076_FixAddMovieAndUpdateMovieDates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
