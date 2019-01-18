@@ -62,5 +62,5 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-static/*.js linguist-vendored
+*.js linguist-vendored
 
