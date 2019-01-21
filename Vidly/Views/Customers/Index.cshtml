@@ -2,7 +2,6 @@
     model is what is loaded into the view from the corresponding method in the Controller class.
     In this case, model is set to an Enumerable of Customer because it is being passed a list of Customer objects (return View(customers))
 *@
-@using Vidly.Models
 @model IEnumerable<Vidly.Models.Customer>
 
 @{
@@ -13,7 +12,7 @@
 <h2>Customers</h2>
 
 
-<button type="button" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px">@Html.ActionLink("New Customer", "New", "Customers")</button>
+<button type="button" class="btn btn-primary" style="margin-bottom: 20px; margin-top: 20px;">@Html.ActionLink("New Customer", "New", "Customers")</button>
 
 @*
     If statement checking if Model(An Enumerable list) contains any objects in it.
@@ -31,60 +30,69 @@ else
     *@
     <table id="customers" class="table table-bordered table-hover">
         <thead>
-            <tr>
-                <th>Customer</th>
-                <th>Membership Type</th>
-                <th>Delete</th>
-                <th>Test</th>
-            </tr>
+        <tr>
+            <th>Customer</th>
+            <th>Membership Type</th>
+            <th>Delete</th>
+            <th>Test</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var customer in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
-                    <td>@customer.MembershipType.Name</td>
-                    <td>
-                        <button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button>
-                    </td>
-                    <td>
-                        <button test-button-id class="btn-link fixer">Test</button>
-                    </td>
-                </tr>
-            }
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(customer.Name, "Details", "Customers", new {id = customer.Id}, null)</td>
+                <td>@customer.MembershipType.Name</td>
+                <td>
+                    <button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button>
+                </td>
+                <td>
+                    <button test-button-id class="btn-link fixer">Test</button>
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
-
 }
+
 @section scripts
 {
     <script>
         $(document).ready(function() {
-            $("#customers .js-delete").on("click", function() {
-                var button = $(this);
-                if (confirm("Are you sure you want to delete this customer?")) {
-                    $.ajax({
-                        url: "/api/customers/" + button.attr("data-customer-id"),
-                        method: "DELETE",
-                        success: function() {
-                            button.parents("tr").remove();
-                        }
-                    })
-                }
-            })
+            $("#customers .js-delete").on("click",
+                function() {
+                    var button = $(this);
+                    bootbox.confirm("Are you sure you want to delete this customer?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/api/customers/" + button.attr("data-customer-id"),
+                                    method: "DELETE",
+                                    success: function() {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+
+                });
         });
     </script>
-    
+
     <script>
         $(document).ready(function() {
-            $("#customers .fixer").on("click", function() {
-                var button = $(this);
-                if (confirm("Are you sure you want to click this button?")) {
-                    console.log("Whoa, you clicked the fixer button!");
-                } else {
-                    console.log("Good choice man");
-                }
-            })
+            $("#customers .fixer").on("click",
+                function () {
+                    bootbox.confirm("Are you sure you want to click this button?",
+                        function(result) {
+                            if (result) {
+                                console.log("Whoa, you clicked the fixer button!");
+                            } else {
+                                console.log("Good choice man");
+                            }
+                        });
+
+                });
         })
     </script>
 }
