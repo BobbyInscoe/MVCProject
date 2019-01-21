@@ -29,11 +29,13 @@ else
         Loops through all objects in the enumerable list (Model) and creates an action link with that Customer's name, and has the link point to the Details method.
         Details method computers logic based on
     *@
-    <table class="table table-bordered table-hover">
+    <table id="customers" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Customer</th>
                 <th>Membership Type</th>
+                <th>Delete</th>
+                <th>Test</th>
             </tr>
         </thead>
         <tbody>
@@ -42,9 +44,47 @@ else
                 <tr>
                     <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
                     <td>@customer.MembershipType.Name</td>
+                    <td>
+                        <button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button>
+                    </td>
+                    <td>
+                        <button test-button-id class="btn-link fixer">Test</button>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#customers .js-delete").on("click", function() {
+                var button = $(this);
+                if (confirm("Are you sure you want to delete this customer?")) {
+                    $.ajax({
+                        url: "/api/customers/" + button.attr("data-customer-id"),
+                        method: "DELETE",
+                        success: function() {
+                            button.parents("tr").remove();
+                        }
+                    })
+                }
+            })
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            $("#customers .fixer").on("click", function() {
+                var button = $(this);
+                if (confirm("Are you sure you want to click this button?")) {
+                    console.log("Whoa, you clicked the fixer button!");
+                } else {
+                    console.log("Good choice man");
+                }
+            })
+        })
+    </script>
 }

@@ -12,10 +12,16 @@ namespace Vidly.App_Start
     {
         public MappingProfile()
         {
+            // API -> Outbound
             Mapper.CreateMap<Customer, CustomerDto>();
-            Mapper.CreateMap<CustomerDto, Customer>().ForMember(c => c.Id, opt => opt.Ignore()); // Opt used to ignore customer Id for update requests
 
+            //API <- Inbound
+            Mapper.CreateMap<CustomerDto, Customer>().ForMember(c => c.Id, opt => opt.Ignore()); // Opt used to ignore customer Id for Inbound requests because Id never changes.
+
+            // API -> Outbound
             Mapper.CreateMap<Movie, MovieDto>();
+
+            //API <- Inbound
             Mapper.CreateMap<MovieDto, Movie>().ForMember(m => m.Id, opt => opt.Ignore());
         }
     }
