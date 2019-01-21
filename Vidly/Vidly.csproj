@@ -257,6 +257,10 @@
     <Compile Include="Migrations\201901181028076_FixAddMovieAndUpdateMovieDates.Designer.cs">
       <DependentUpon>201901181028076_FixAddMovieAndUpdateMovieDates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901210856475_ChangeStockToByteAndNullableTypesInMovieForm.cs" />
+    <Compile Include="Migrations\201901210856475_ChangeStockToByteAndNullableTypesInMovieForm.Designer.cs">
+      <DependentUpon>201901210856475_ChangeStockToByteAndNullableTypesInMovieForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -410,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901181028076_FixAddMovieAndUpdateMovieDates.resx">
       <DependentUpon>201901181028076_FixAddMovieAndUpdateMovieDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901210856475_ChangeStockToByteAndNullableTypesInMovieForm.resx">
+      <DependentUpon>201901210856475_ChangeStockToByteAndNullableTypesInMovieForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
