@@ -39,10 +39,14 @@ namespace Vidly.Controllers
         /// Loads the MovieViewModel with the list of customers into the view.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
+        public ViewResult Index()
         {
+            if (User.IsInRole(RoleName.CanManageMovies))
+            {
+                return View("List");
+            }
+                return View("ReadOnlyList");
             //var movies = _context.Movies.Include(m => m.GenreType).ToList(); // Sets movies equal to the list generated in the private method GetMovies();
-            return View();
         }
 
         /// <summary>
@@ -66,7 +70,8 @@ namespace Vidly.Controllers
         /// Sets the view to the Movie Form and loads a viewModel object that only has the genre types (as there is no movie yet created).
         /// </summary>
         /// <returns></returns>
-        public ActionResult New()
+        [Authorize(Roles = RoleName.CanManageMovies)]
+        public ViewResult New()
         {
             var genreTypes = _context.GenreTypes.ToList();
             var viewModel = new MovieFormViewModel
@@ -76,6 +81,7 @@ namespace Vidly.Controllers
             return View("MovieForm", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
@@ -95,7 +101,8 @@ namespace Vidly.Controllers
 
             return View("MovieForm", viewModel);
         }
-        
+
+        [Authorize(Roles = RoleName.CanManageMovies)]
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
