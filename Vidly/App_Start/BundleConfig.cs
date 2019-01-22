@@ -24,7 +24,7 @@ namespace Vidly
                 "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap-flatly.css",
+                "~/Content/bootstrap-slate.css",
                 "~/content/datatables/css/datatables.bootstrap.css",
                 "~/Content/Site.css"));
         }

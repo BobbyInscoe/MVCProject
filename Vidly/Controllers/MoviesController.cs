@@ -41,10 +41,8 @@ namespace Vidly.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var movies =
-                _context.Movies.Include(m => m.GenreType)
-                    .ToList(); // Sets movies equal to the list generated in the private method GetMovies();
-            return View(movies);
+            //var movies = _context.Movies.Include(m => m.GenreType).ToList(); // Sets movies equal to the list generated in the private method GetMovies();
+            return View();
         }
 
         /// <summary>

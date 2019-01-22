@@ -13,6 +13,7 @@ namespace Vidly.Dtos
         [StringLength(255)]
         public string Name { get; set; }
 
+        public GenreTypeDto GenreType { get; set; }
         public byte GenreTypeId { get; set; }
 
         public DateTime ReleaseDate { get; set; }
