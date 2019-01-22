@@ -25,7 +25,7 @@
 {
     <script>
         $(document).ready(function() {
-            var table = $("#movies").dataTable({
+            var table = $("#movies").DataTable({
                 ajax: {
                     url: "/api/movies",
                     dataSrc: ""
@@ -41,7 +41,10 @@
                         data: "genreType.name"
                     },
                     {
-                        data: "releaseDate"
+                        data: "releaseDate",
+                        render: function(data) {
+                            return moment(data).format('DD/MM/YYYY');
+                        }
                     },
                     {
                         data: "id",
@@ -52,8 +55,9 @@
                 ]
             });
 
-            $("#movies").on("click", ".js-delete",
-                function () {
+            $("#movies").on("click",
+                ".js-delete",
+                function() {
                     var button = $(this);
                     bootbox.confirm("Are you sure you want to delete this movie?",
                         function(result) {
@@ -67,7 +71,7 @@
                                 });
                             }
                         });
-                })
+                });
         });
     </script>
 }
