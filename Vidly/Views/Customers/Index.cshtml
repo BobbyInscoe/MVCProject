@@ -14,52 +14,52 @@
 
 <button type="button" class="btn btn-primary" style="margin-bottom: 20px; margin-top: 20px;">@Html.ActionLink("New Customer", "New", "Customers")</button>
 
+
 @*
-    If statement checking if Model(An Enumerable list) contains any objects in it.
-*@
-@if (!Model.Any())
-{
-    <p>There are currently no customers.</p>
-}
-else
-{
-    @*
         Creates a table with the first column with the name Customer.
         Loops through all objects in the enumerable list (Model) and creates an action link with that Customer's name, and has the link point to the Details method.
         Details method computers logic based on
     *@
-    <table id="customers" class="table table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>Customer</th>
-            <th>Membership Type</th>
-            <th>Delete</th>
-            <th>Test</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var customer in Model)
-        {
-            <tr>
-                <td>@Html.ActionLink(customer.Name, "Details", "Customers", new {id = customer.Id}, null)</td>
-                <td>@customer.MembershipType.Name</td>
-                <td>
-                    <button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button>
-                </td>
-                <td>
-                    <button test-button-id class="btn-link fixer">Test</button>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
-}
+<table id="customers" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Customer</th>
+        <th>Membership Type</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
 
+    </tbody>
+</table>
 @section scripts
 {
     <script>
         $(document).ready(function () {
-            $("#customers").DataTable();
+            var table = $("#customers").DataTable({
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function(data, type, customer) {
+                            return "<a href='/customers/edit/" + customer.id + "'>" + customer.name + "</a>";
+
+                        }
+                    },
+                    {
+                        data: "membershipType.name"
+                    },
+                    {
+                        data: "id",
+                        render: function(data) {
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                        }
+                    }
+                    ]
+            });
 
             $("#customers").on("click", ".js-delete",
                 function() {
@@ -70,8 +70,8 @@ else
                                 $.ajax({
                                     url: "/api/customers/" + button.attr("data-customer-id"),
                                     method: "DELETE",
-                                    success: function() {
-                                        button.parents("tr").remove();
+                                    success: function () {
+                                        table.row(button.parents("tr")).remove().draw();
                                     }
                                 });
                             }
@@ -81,20 +81,5 @@ else
         });
     </script>
 
-    <script>
-        $(document).ready(function() {
-            $("#customers .fixer").on("click",
-                function () {
-                    bootbox.confirm("Are you sure you want to click this button?",
-                        function(result) {
-                            if (result) {
-                                console.log("Whoa, you clicked the fixer button!");
-                            } else {
-                                console.log("Good choice man");
-                            }
-                        });
 
-                });
-        })
-    </script>
 }

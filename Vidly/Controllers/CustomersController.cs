@@ -87,8 +87,8 @@ namespace Vidly.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList(); // Sets customers equal to the list generated in the private method GetCustomers();
-            return View(customers);
+            //var customers = _context.Customers.Include(c => c.MembershipType).ToList(); // Sets customers equal to the list generated in the private method GetCustomers();
+            return View();
         }
 
         /// <summary>
