@@ -3,11 +3,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Vidly.Models
 {
+    /// <summary>
+    /// Registration via social login / third party login
+    /// </summary>
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        [Required]
+        [Display(Name = "Driving License")]
+        public string DrivingLicense { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -62,8 +68,14 @@ namespace Vidly.Models
         public bool RememberMe { get; set; }
     }
 
+    /// <summary>
+    /// Registration via site's own register form
+    /// </summary>
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name="Driving License")]
+        public string DrivingLicense { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
