@@ -62,8 +62,9 @@ namespace Vidly.Controllers
 
             if (movie == null)
                 return HttpNotFound();
-
-            return View(movie);
+            if(User.IsInRole(RoleName.CanManageMovies))
+                return View(movie);
+            return View("DetailsReadOnly", movie);
         }
 
         /// <summary>

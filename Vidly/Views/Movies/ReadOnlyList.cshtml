@@ -29,6 +29,9 @@
                 columns: [
                     {
                         data: "name",
+                        render: function(data, type, movie) {
+                            return "<a href='/movies/details/" + movie.id + "'>" + movie.name + "</a>";
+                        }
                     },
                     {
                         data: "genreType.name"
@@ -38,7 +41,8 @@
                         render: function(data) {
                             return moment(data).format('DD/MM/YYYY');
                         }
-                    }
+                    },
+
                 ]
             });
 
