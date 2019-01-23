@@ -13,7 +13,7 @@
     Edit the current customer on the specific page.    
 *@
 <div>
-    <button class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px">@Html.ActionLink("Edit", "Edit", "Customers", new { id = @Model.Id }, null)</button>
+    <button class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px">@Html.ActionLink("Edit", "Edit", "Customers", new {id = @Model.Id}, null)</button>
 </div>
 
 
@@ -23,32 +23,31 @@
     {
         <table class="table table-bordered table-hover">
             <thead>
-                <tr>
-                    <td>Membership Type</td>
-                    <td>Birthday</td>
-                </tr>
+            <tr>
+                <td>Membership Type</td>
+                <td>Birthday</td>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>@Model.MembershipType.Name</td>
-                    <td>@Model.Birthday.Value.ToShortDateString()</td>
-                </tr>
+            <tr>
+                <td>@Model.MembershipType.Name</td>
+                <td>@Model.Birthday.Value.ToShortDateString()</td>
+            </tr>
             </tbody>
         </table>
-
     }
     else
     {
         <table class="table table-bordered table-hover">
             <thead>
-                <tr>
-                    <td>Membership Type</td>
-                </tr>
+            <tr>
+                <td>Membership Type</td>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>@Model.MembershipType.Name</td>
-                </tr>
+            <tr>
+                <td>@Model.MembershipType.Name</td>
+            </tr>
             </tbody>
         </table>
     }

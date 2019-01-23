@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Vidly.Migrations;
 using Vidly.Models;
 using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
     /// <summary>
-    /// Contains the logic for our Movie pages that is then passed to a View that corresponds to the Method's name
+    ///     Contains the logic for our Movie pages that is then passed to a View that corresponds to the Method's name
     /// </summary>
     public class MoviesController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         /// <summary>
-        /// Initialize Database connection in Constructor
+        ///     Initialize Database connection in Constructor
         /// </summary>
         public MoviesController()
         {
@@ -27,7 +23,7 @@ namespace Vidly.Controllers
         }
 
         /// <summary>
-        /// Overrides Dispose
+        ///     Overrides Dispose
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
@@ -36,22 +32,19 @@ namespace Vidly.Controllers
         }
 
         /// <summary>
-        /// Loads the MovieViewModel with the list of customers into the view.
+        ///     Loads the MovieViewModel with the list of customers into the view.
         /// </summary>
         /// <returns></returns>
         public ViewResult Index()
         {
-            if (User.IsInRole(RoleName.CanManageMovies))
-            {
-                return View("List");
-            }
-                return View("ReadOnlyList");
+            if (User.IsInRole(RoleName.CanManageMovies)) return View("List");
+            return View("ReadOnlyList");
             //var movies = _context.Movies.Include(m => m.GenreType).ToList(); // Sets movies equal to the list generated in the private method GetMovies();
         }
 
         /// <summary>
-        /// Sets the movie to the Id passed and then checks if the movie exists. If not, returns an Http not found.
-        /// Otherwise, it passes that specific movie to the View
+        ///     Sets the movie to the Id passed and then checks if the movie exists. If not, returns an Http not found.
+        ///     Otherwise, it passes that specific movie to the View
         /// </summary>
         /// <param name="Id">Id passed through</param>
         /// <returns>Specific view of the movie with that movie Id</returns>
@@ -62,13 +55,14 @@ namespace Vidly.Controllers
 
             if (movie == null)
                 return HttpNotFound();
-            if(User.IsInRole(RoleName.CanManageMovies))
+            if (User.IsInRole(RoleName.CanManageMovies))
                 return View(movie);
             return View("DetailsReadOnly", movie);
         }
 
         /// <summary>
-        /// Sets the view to the Movie Form and loads a viewModel object that only has the genre types (as there is no movie yet created).
+        ///     Sets the view to the Movie Form and loads a viewModel object that only has the genre types (as there is no movie
+        ///     yet created).
         /// </summary>
         /// <returns></returns>
         [Authorize(Roles = RoleName.CanManageMovies)]
@@ -111,7 +105,7 @@ namespace Vidly.Controllers
             {
                 var viewModel = new MovieFormViewModel(movie)
                 {
-                    GenreTypes = _context.GenreTypes.ToList(),
+                    GenreTypes = _context.GenreTypes.ToList()
                 };
 
                 return View("MovieForm", viewModel);
@@ -122,7 +116,6 @@ namespace Vidly.Controllers
             {
                 movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
-                
             }
             else
             {

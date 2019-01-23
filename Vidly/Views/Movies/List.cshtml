@@ -4,21 +4,22 @@
 }
 
 <h2>Movies</h2>
-<button type="button" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px;">@Html.ActionLink("New Movie", "New","Movies")</button>
+<button type="button" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px;">@Html.ActionLink("New Movie", "New", "Movies")</button>
 
-    <table id="movies" class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Movie</th>
-                <th>Genre</th>
-                <th>Release Date</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
+<table id="movies" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Movie</th>
+        <th>Genre</th>
+        <th>Release Date</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
 
-        </tbody>
-    </table>
+    </tbody>
+</table>
+
 @section scripts
 {
     <script>

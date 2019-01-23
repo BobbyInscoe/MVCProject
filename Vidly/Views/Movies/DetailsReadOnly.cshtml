@@ -8,19 +8,19 @@
 
 <table class="table table-bordered table-hover">
     <thead>
-        <tr>
-            <th>Genre</th>
-            <th>Release Date</th>
-            <th>Date Added</th>
-            <th>Stock</th>
-        </tr>
+    <tr>
+        <th>Genre</th>
+        <th>Release Date</th>
+        <th>Date Added</th>
+        <th>Stock</th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>@Model.GenreType.Name</td>
-            <td>@Model.ReleaseDate.Date.ToShortDateString()</td>
-            <td>@Model.DateAdded.Date.ToShortDateString()</td>
-            <td>@Model.Stock</td>
-        </tr>
+    <tr>
+        <td>@Model.GenreType.Name</td>
+        <td>@Model.ReleaseDate.Date.ToShortDateString()</td>
+        <td>@Model.DateAdded.Date.ToShortDateString()</td>
+        <td>@Model.Stock</td>
+    </tr>
     </tbody>
 </table>

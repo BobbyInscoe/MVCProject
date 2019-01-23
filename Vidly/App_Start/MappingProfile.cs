@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper;
+﻿using AutoMapper;
 using Vidly.Dtos;
 using Vidly.Models;
 
@@ -15,7 +11,9 @@ namespace Vidly.App_Start
             // API -> Outbound
             Mapper.CreateMap<Customer, CustomerDto>();
             //API <- Inbound
-            Mapper.CreateMap<CustomerDto, Customer>().ForMember(c => c.Id, opt => opt.Ignore()); // Opt used to ignore customer Id for Inbound requests because Id never changes.
+            Mapper.CreateMap<CustomerDto, Customer>()
+                .ForMember(c => c.Id,
+                    opt => opt.Ignore()); // Opt used to ignore customer Id for Inbound requests because Id never changes.
 
             // API -> Outbound
             Mapper.CreateMap<Movie, MovieDto>();

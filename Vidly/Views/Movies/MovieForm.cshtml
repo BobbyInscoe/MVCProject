@@ -28,17 +28,17 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.ReleaseDate)
-        @Html.TextBoxFor(m => m.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.ReleaseDate, "{0:d MMM yyyy}", new {@class = "form-control"})
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.GenreTypeId)
-        @Html.DropDownListFor(m => m.GenreTypeId, new SelectList(@Model.GenreTypes, "Id", "Name"), "Select Genre", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.GenreTypeId, new SelectList(@Model.GenreTypes, "Id", "Name"), "Select Genre", new {@class = "form-control"})
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Stock)
-        @Html.TextBoxFor(m => m.Stock, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Stock, new {@class = "form-control"})
     </div>
     @Html.HiddenFor(m => m.Id)
     <button type="submit" class="btn btn-primary">Save</button>

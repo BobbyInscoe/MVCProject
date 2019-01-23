@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
-using System.Data.Entity;
 using Vidly.Dtos;
 using Vidly.Models;
 
@@ -13,7 +10,7 @@ namespace Vidly.Controllers.Api
 {
     public class MoviesController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public MoviesController()
         {
@@ -42,7 +39,6 @@ namespace Vidly.Controllers.Api
 
             return Ok(Mapper.Map<Movie, MovieDto>(movie));
         }
-
 
 
         // POST /api/movies/1
@@ -100,7 +96,6 @@ namespace Vidly.Controllers.Api
             _context.SaveChanges();
 
             return Ok();
-
         }
     }
 }
