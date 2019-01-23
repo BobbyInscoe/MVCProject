@@ -154,7 +154,8 @@ namespace Vidly.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email,
                     Email = model.Email,
-                    DrivingLicense = model.DrivingLicense
+                    DrivingLicense = model.DrivingLicense,
+                    PhoneNumber = model.PhoneNumber
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -356,6 +357,12 @@ namespace Vidly.Controllers
 
         //
         // POST: /Account/ExternalLoginConfirmation
+        /// <summary>
+        /// External Login for a new user. Requires the same properties as found in AccountViewModels and normal registration
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -378,7 +385,8 @@ namespace Vidly.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    DrivingLicense = model.DrivingLicense
+                    DrivingLicense = model.DrivingLicense,
+                    PhoneNumber = model.PhoneNumber
                 };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)

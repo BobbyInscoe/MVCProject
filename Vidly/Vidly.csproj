@@ -289,6 +289,10 @@
     <Compile Include="Migrations\201901230707024_AddDrivingLicenseToUser.Designer.cs">
       <DependentUpon>201901230707024_AddDrivingLicenseToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901230906081_UpdatePhoneNumberAttributes.cs" />
+    <Compile Include="Migrations\201901230906081_UpdatePhoneNumberAttributes.Designer.cs">
+      <DependentUpon>201901230906081_UpdatePhoneNumberAttributes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -632,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901230707024_AddDrivingLicenseToUser.resx">
       <DependentUpon>201901230707024_AddDrivingLicenseToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901230906081_UpdatePhoneNumberAttributes.resx">
+      <DependentUpon>201901230906081_UpdatePhoneNumberAttributes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
