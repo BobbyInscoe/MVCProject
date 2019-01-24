@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
@@ -85,7 +87,7 @@ namespace Vidly.Controllers
 
             return RedirectToAction("Index", "Customers");
         }
-
+        
         /// <summary>
         ///     Loads the CustomerViewModel with the list of customers into the view.
         /// </summary>
