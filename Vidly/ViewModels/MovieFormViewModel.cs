@@ -19,7 +19,10 @@ namespace Vidly.ViewModels
             ReleaseDate = movie.ReleaseDate;
             Stock = movie.Stock;
             GenreTypeId = movie.GenreTypeId;
+            AvailableStock = movie.Stock;
         }
+
+        [Display(Name = "Current amount available")] public byte AvailableStock { get; set; }
 
         public IEnumerable<GenreType> GenreTypes { get; set; }
         public int? Id { get; set; }
