@@ -17,6 +17,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Useless line X in Method Y
 
+## [1.3.6] 2019-09-23
+
+### Added
+- Test Method X in Test Class Y for Z reasons
+
+### Changed
+- Field name X in Class Y to Z
+
+### Removed
+- Useless line X in Method Y
+
 # Web Solution
 
 ## [Unreleased]
@@ -30,6 +41,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Method X because Y reasons
 
+## [1.0.0] 2019-09-23
+
+### Added
+- Test Method X in Test Class Y for Z reasons
+
+### Changed
+- Field name X in Class Y to Z
+
+### Removed
+- Useless line X in Method Y
+
 # Serverless
 
 ## [Unreleased]
@@ -42,3 +64,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - Variable X from Method Y
+
+## [1.0.0] 2019-09-23
+
+### Added
+- Test Method X in Test Class Y for Z reasons
+
+### Changed
+- Field name X in Class Y to Z
+
+### Removed
+- Useless line X in Method Y
