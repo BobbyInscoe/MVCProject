@@ -1,5 +1,6 @@
 ## [Unreleased]
 ### Desktop
+
 #### Added
 -
 
@@ -10,6 +11,7 @@
 -
 
 ### Web
+
 #### Added
 -
 
