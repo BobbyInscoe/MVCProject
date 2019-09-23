@@ -1,3 +1,20 @@
-# MVCProject
+## [Unreleased]
+### Desktop
+#### Added
+-
 
-Project to familiarize myself with C# and the inner workings of the MVC structure within Visual Studio.
+#### Changed
+-
+
+#### Removed
+-
+
+### Web
+#### Added
+-
+
+#### Changed
+-
+
+#### Removed
+-
