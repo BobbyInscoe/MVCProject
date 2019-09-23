@@ -6,37 +6,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Desktop
+## Desktop
 
-#### Added
+### Added
 - Test Method X in Test Class Y
 
-#### Changed
+### Changed
 - Field name X in Class Y
 
-#### Removed
+### Removed
 - Useless line X in Method Y
 
-### Web Solution
+## Web Solution
 
-#### Added
+### Added
 - Convoluting variable X in Constructor Y
 
-#### Changed
+### Changed
 - Documentation for Method X
 
-#### Removed
+### Removed
 - Method X because Y reasons
 
-### Serverless
+## Serverless
 
-#### Added
+### Added
 - X Your momma jokes in project Y
 
-#### Changed
+### Changed
 - Field X in Object Y 
 
-#### Removed
+### Removed
 - Variable X from Method Y
 
 ## [1.0.0] - 2019-09-23
