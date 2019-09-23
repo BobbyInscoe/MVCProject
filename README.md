@@ -9,45 +9,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Desktop
 
 #### Added
--
+- Test Method X in Test Class Y
 
 #### Changed
--
+- Field name X in Class Y
 
 #### Removed
--
+- Useless line X in Method Y
 
 ### Web Solution
 
 #### Added
--
+- Convoluting variable X in Constructor Y
 
 #### Changed
--
+- Documentation for Method X
 
 #### Removed
--
+- Method X because Y reasons
 
 ### Serverless
 
 #### Added
--
+- X Your momma jokes in project Y
 
 #### Changed
--
+- Field X in Object Y 
 
 #### Removed
--
+- Variable X from Method Y
 
 ## [1.0.0] - 2019-09-23
 ### Added
--
+- Interesting stuff
 
 ### Changed
--
+- Uninteresting Stuff
 
 ### Removed
--
+- Useless stuff
 
 ## [0.3.0] - 2015-12-03
 ### Added
