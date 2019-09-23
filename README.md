@@ -42,13 +42,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - Variable X from Method Y
-
-## [1.0.0] - 2019-09-23
-### Added
-- Interesting stuff
-
-### Changed
-- Uninteresting Stuff
-
-### Removed
-- Useless stuff
